@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+	<title>
+		Intership Evaluation Form 
+	</title>
+
+	<style>
+
+		/* Styling the Body element i.e. Color,
+		Font, Alignment */
+		body {
+			background-color: #9691bf;
+			font-family: Verdana;
+			text-align: center;
+		}
+
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+			background-color: #fff;
+			max-width: 900px ;
+			margin: 50px auto;
+			padding: 30px 20px;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Styling form-control Class */
+		.form-control {
+			text-align: left;
+			margin-bottom: 25px;
+		}
+
+		/* Styling form-control Label */
+		.form-control label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		/* Styling form-control input,
+		select, textarea */
+		.form-control input,
+		.form-control select,
+		.form-control textarea {
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 10px;
+			display: block;
+			width: 80%;
+		}
+
+		/* Styling form-control Radio
+		button and Checkbox */
+		.form-control input[type="radio"],
+		.form-control input[type="checkbox"] {
+			display: inline-block;
+			width: 500px auto;
+		}
+
+		/* Styling Button */
+		button {
+			background-color: #05c46b;
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			font-size: 21px;
+			display: block;
+			width: 95%;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+		select:invalid { color: gray; }
+	</style>
+</head>
+
+<body>
+	<h1>Internship Observation Form</h1>
+	<h2>Department of Information Technology & Communication, POLIKU</h2>
+
+	<!-- Create Form -->
+	<form id="form" action="{{ url_for('submit')}}" method="POST" >
+
+		<!-- Details -->
+		<div class="form-control">
+			<label for="sv" id="sv">
+				Name
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text"
+				id="sv" name="sv" 
+				placeholder="Enter your name" required/>
+		</div>
+
+		<div class="form-control">
+			<label for="desig" id="desig">
+				Designation
+			</label>
+
+			<!-- Input Type Email-->
+			<input type="text"
+				id="desig" name="desig" 
+				placeholder="Enter your designation." required/>
+		</div>
+
+		<!--<div class="form-control">
+			<label for="student" id="student">
+				Intern's Name
+			</label> -->
+
+			<!-- Input Type Text -->
+			<!--<input type="text"
+				id="student" name="student" 
+				placeholder="Enter the intern's name here." />
+		</div>-->
+
+		<div class="form-control">
+			<label for ="student"  >Name of the intern</label>
+		<select required name = "student">
+		<option value="" disabled selected hidden>Please Choose...</option>
+			{% for key in student %}
+            <option value="{{ key }}" 
+            {% if (key == key.student) %} 
+               selected="selected"
+               {% endif %}> 
+               {{ key }}
+            </option>
+           {% endfor %}
+		</select>
+			
+		</div>
+
+		<div class="form-control">
+			<label for="role" id="label-role">
+				A1. Generally, how does the student handle in any forms of verbal and written communication in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="a1" >
+				
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="a2" id="a2">
+				A2. Generally, how does the student handle in any forms of non-verbal communication in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="a2" placeholder="Please select">
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="b1" id="b1">
+				B1. Does the student aware of and comply the rules in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="b1" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="b2" id="b2">
+				B2. Does the student understand the job procedures in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="b2" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="b3" id="b3">
+				B3. Does the student aware of the health and safety procedures in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="b3" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c1" id="c1">
+				C1. Does the student submit the report or the reflective journal to be verified by the supervisor on-time?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c1" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c2" id="c2">
+				C2. Does the student able to perform tasks in different situations professionally?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c2" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c3" id="c3">
+				C3. Does the student able to perform the tasks given responsibly ? 
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c3" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c4" id="c4">
+				C4. How satisfied are you with the student's accountability and integrity.
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c4" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c5" id="c5">
+				C5. How satisfied are you with the student's ethic and protocol practice.
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c5" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c6" id="c6">
+				C6. Does the student able to manage his/her time well during the training in the organisation?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select required name="c6">
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+			<label for="c7" id="c7">
+				C7. What is your rating of the student's awareness of the current issues?
+			
+			<!-- Dropdown options -->
+			<select required name="c7" >
+				<option value="" disabled selected hidden>Please Choose...</option>
+				<option value="1">Unsatisfactory</option>
+				<option value="2">Below average</option>
+				<option value="3">Average</option>
+				<option value="4">Good</option>
+				<option value="5">Excellent</option>
+			</select>
+		</div>
+
+
+
+
+	
+
+		<div class="form-control">
+			<label for="comment">
+				Any comments or suggestions
+			</label>
+
+			<!-- multi-line text input control -->
+			<textarea name="comment" placeholder="Enter your comment here"></textarea>
+		</div>
+
+		<!-- Multi-line Text Input Control -->
+		<button type="submit" value="submit">
+			Submit
+		</button>
+	</form>
+</body>
+
+</html>
